@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.celdaTabla{
+	text-align:center
+}
+.custom-header{
+	text-align: center;
+	background: #ff9900;
+	color: #fff;
+	width:100%
+}
+
+div.ms-selectable{
+	width:100%
+}
+
+table.dataTable thead{
+	text-align: center;
+	padding: 3px;
+	background: #ff9900;
+	color: #fff;
+}	
+
+#ms-film_list{
+	width:500px;
+}

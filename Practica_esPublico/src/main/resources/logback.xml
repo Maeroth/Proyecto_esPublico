@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<configuration>
+   
+   <property name="LOG_PATH" value="C:\\Users\\Maeroth\\Desktop\\Practica_esPublico\\logs\\esPublico.log"/> 
+   <!-- VOLCADO A FICHERO -->
+   <appender name = "FILE" class = "ch.qos.logback.core.FileAppender">
+      <File>${LOG_PATH}</File>
+       <encoder>
+         <pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.sss'Z'}][%C] [%t] [%L] [%-5p] %m%n</pattern>
+      </encoder>
+   </appender>   
+   <!-- VOLCADO A CONSOLA -->
+    <appender name = "STDOUT" class = "ch.qos.logback.core.ConsoleAppender">
+       <encoder>
+         <pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.sss'Z'}]  [%C] [%t] [%L] [%-5p] %highlight(%m%n)</pattern>
+         <!--  																^^^^^^^^^^^^^^^^Esta parte la sacará en rojo-->
+      </encoder>
+   </appender>  
+
+   <root name="log_console" level = "INFO">
+		<appender-ref ref = "STDOUT"/>
+		<appender-ref ref = "FILE"/>
+   </root>
+ 
+</configuration>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="es.espublico.ejercicio.modelo.People" table="PEOPLE">
+		
+	  <id name="url" column="ID" type="string" length="50">
+          <generator class="assigned" />
+      </id>
+
+	  <property name="name" column="NAME" type="string" length="50" />
+      <property name="height" column="HEIGHT" type="string" length="10" />
+      <property name="mass" column="MASS" type="string" length="10" />
+      <property name="hair_color" column="HAIR_COLOR" type="string" length="25" />
+      <property name="skin_color" column="SKIN_COLOR" type="string" length="25" />
+      <property name="eye_color" column="EYE_COLOR" type="string" length="25" />
+      <property name="birth_year" column="BIRTH_YEAR" type="string" length="8" />
+      <property name="gender" column="GENDER" type="string" length="15" />
+      <property name="created" column="CREATED" type="date" />
+      <property name="edited" column="EDITED" type="date" />
+      
+      
+      <!-- TABLA INTERMEDIA MANY YO MANY: FILMS_PEOPLE(ID_PEOPLE, ID_FILM) -->
+      <!-- PONEMOS INVERSE=TRUE PARA QUE TENGA EL CONTROL LA TABLA FILM -->
+       <set name="peliculas" table="films_people" cascade="all" inverse="true">
+          <key column="ID_PEOPLE" />  <!-- columna nueva en la tabla intermedia -->
+          <many-to-many column="ID_FILM" class="es.espublico.ejercicio.modelo.Film" />
+      </set>
+
+      <!-- TABLA INTERMEDIA MANY YO MANY: PEOPLE_STARSHIP(ID_PEOPLE, ID_STARSHIP) -->
+      <set name="naves" table="people_starships" cascade="all">
+          <key column="ID_PEOPLE" />  <!-- columna nueva en la tabla intermedia -->
+          <many-to-many column="ID_STARSHIP" class="es.espublico.ejercicio.modelo.Starship" />
+      </set>
+      
+	
+    </class>
+</hibernate-mapping>

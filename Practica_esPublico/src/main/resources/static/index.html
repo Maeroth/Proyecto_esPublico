@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Ejercicios esPúblico</title>
+    <!-- ESTILOS -->
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css"/> 
+    <link rel="stylesheet" href="javascript/jquery-ui-1.13.2.custom/jquery-ui.min.css">
+    <link rel="stylesheet" href="javascript/jQuery-Multiselect/css/multi-select.css">
+    <!-- Estilo personal de la página index.html --> 
+    <link rel="stylesheet" href="css/index.css"> 
+
+	<!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script> 
+    <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+	<script src="javascript/jQuery-Multiselect/js/jquery.multi-select.js"></script>
+	<script src="javascript/jquery-ui-1.13.2.custom/jquery-ui.min.js"></script>
+	<!-- Javascript personal de la página index.html -->
+	<script src="javascript/index.js"></script>
+
+  </head>
+  <body>
+	<header class="imagefull">
+		<div>
+		
+			<div class="columns medium-2 medium-push-5 text-center">
+		    	<div class="logo"></div>
+		    </div><!-- columns -->
+		
+		    <div class="columns medium-5 medium-pull-2">
+		
+	        </div><!-- columns -->
+	
+		    <div class="columns medium-5">
+		    	<nav class="nav x2">
+		        	<span class="cat">Tecnología</span>
+		        </nav>
+	         </div><!-- columns -->
+		</div><!-- row -->
+    </header>
+    
+	<!-- CUERPO DE LA PÁGINA -->
+    <div style="margin-left:30%; margin-top:5%">
+		<div id="acordion" style="max-width:1000px">
+			<h3>Ejercicio 1</h3>
+			<div id="botonera_ejercicio_1" style="min-height: 900px">
+				<p>Dado un fichero .csv con registros de pedidos, la aplicación deberá generar otro fichero con los registros ordenados por número de pedido. Además de eso deberá importar en una BD todos esos datos; y mostrar, al terminar el procesado, un resumen del número de pedidos de cada tipo según distintas columnas.</p>
+				<p>Para realizar el ejercicio adjuntamos links para descargar 2 ficheros, con la misma estructura de datos (usando como separador la coma <,>):</p>
+				<ul>				
+					<li>Region</li>
+					<li>Country</li>
+					<li>Item Type</li>
+					<li>Sales Channel</li>
+					<li>Order Priority</li>
+					<li>Order Date</li>
+					<li>Order ID</li>
+					<li>Ship Date</li>
+					<li>Units Sold</li>
+					<li>Unit Price</li>
+					<li>Unit Cost</li>
+					<li>Total Revenue</li>
+					<li>Total Cost</li>
+					<li>Total Profit</li>
+				</ul>
+				<p>Objetivos del ejercicio:</p>
+				<p>La aplicación recibirá como parámetro de entrada el path del fichero a procesar.</p>
+				<p>El campo por el que tiene que estar ordenado el fichero resultante es orderId.</p>
+				<p>En el resumen final deberá salir el conteo por cada tipo de los campos: Region, Country, Item Type, Sales Channel, Order Priority.</p>
+			    <div id="loading1" style="display:none; margin-left: 35%; margin-top:3%">
+			    	<img style="max-width:40%" src="img/star_wars_loading.gif"/>
+				</div>
+			    <button class="button bg-color00" style="margin-left: 35%; margin-top:3%; width:30%" id="boton1" onclick="javascript:$('#dialog_cargaDatosEjericio1').dialog('open')">Ejercicio 1</button>
+			   	
+			</div>
+			<h3>Ejercicio 2</h3>
+				<div id="botonera_ejercicio_2" style="min-height:500px">
+					<p>Utilizando la API de Start Wars (https://swapi.py4e.com/api/) realizar las siguientes funcionalidades:</p>
+					<ul>
+						<li>Importación de datos a BD local:</li>
+						<li>Diseñar las tablas necesarias para poder importar las siguientes entidades: Films, People & Starships.</li>
+						<li>Importar todos los datos proporcionados por la API (de las entidades anteriormente comentadas) a la BD.</li>
+					</ul>
+					<p>Resolver unas consultas:</p>
+					<ul>
+						<li>Listar todas las personas con el número de películas en las que aparece y el listado de sus títulos.</li>
+						<li>Se mostrará el listado de películas para permitir seleccionar un grupo de ellas, una vez seleccionadas, buscar quien es la persona que conduce la nave que más veces aparece en esas películas.</li>
+					</ul>			
+				  	<!-- BLOQUE EJERCICIO 2 -->
+				  	<div id="loading2" style="display:none; margin-left: 35%; margin-top:3%">
+				    		<img style="max-width:40%" src="img/star_wars_loading.gif"/>
+	  				</div>
+				    <button onclick="javascript:$('#dialog_cargaDatosEjericio2').dialog('open')" class="button bg-color00" style="margin-left: 35%; margin-top:3%; width:30%" id="boton2">Ejercicio 2</button>
+				    <div id="bloqueTablaActores" style="margin-top: 5%">
+					    <table id="tablaActores">
+					    	<thead>
+					    		<tr>
+					     			<th style="width:25%">Nombre</th>
+					     			<th style="width:25%">Número de Películas</th>
+					    	  		<th style="width:50%">Título de la Película</th>
+						      	</tr>
+					    	</thead>		
+					      	<tbody>
+					      	</tbody>
+					      </table>
+					</div>
+					<div id="bloqueTablaPeliculas" style="margin-top: 3%; float:left; display: none">
+							<select id="film_list" multiple="multiple"></select>
+					</div>
+					<span style="float:left; margin-top:7%; width:38%; margin-left: 5%" id="personaje_nave"></span>
+				</div>
+				
+			</div>
+	      
+
+    </div>
+    
+    <!-- DIALOGS - APARECEN OCULTOS -->
+    <div id="dialog_cargaDatosEjericio1" title="Lectura CSV, volcado a BD y escritura CSV">
+	  <p>Se va a procesar la lectura del fichero CSV de la ruta especificada en el fichero de propiedades de la aplicación (<b>spring-properties.properties - fichero.rutaLecturaCSV</b>).</p>
+	  <p>La lectura del fichero CSV va a tardar en función del tamaño del fichero (<b>120MB - de 3 a 4 minutos apróx.</b>)</p>
+	  <p>Una vez se han leído los ficheros, se volcarán a base de datos con una transacción por lotes (el tamaño en lotes se puede definir en el <b>parámetro datasource.lote</b>).</p>
+	  <p>Finalmente, se ordenan los registros en memoria y se vuelcan a otro fichero que tomará la ruta definida en el parámetro <b>fichero.rutaEscrituraCSV</b> del fichero de propiedades.</p>
+	</div>
+    
+	<div id="dialog_cargaDatosEjericio2" title="Carga de datos y lectura de API STAR WARS">
+	  <p>En este ejercicio se van a buscar los datos en la API <b>swapi.py4e.com/api</b> y se cargarán en memoria.</p>
+	  <p>Se efectuarán las relaciones <b>Film-Starship-People</b> y se volcarán a base de datos.</p> 
+	  <p>Después se hará una lectura de las personas que hay, el número de películas que he hecho y sus títulos, rellenando la <b>tabla</b> que hay en este apartado.</p>
+	  <p>Se descubrirá el bloque de Películas al final del todo, donde se podrán seleccionar las películas y se lanzará una consulta para saber quién es <b>el piloto que ha manejado la nave que más ha aparecido en las películas </b>(en el caso de que existan varios, seleccionará por nombre de actor de forma ascendente).</b></p>
+	</div>
+	<div id="dialog_error" title="Error">
+	<p></p>
+	<div id="dialog_ok" title="Proceso completado">
+	</div>
+	</div>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="es.espublico.ejercicio.modelo.Film" table="FILMS">
+		
+	  <id name="url" column="ID" type="string" length="50">
+          <generator class="assigned" />
+      </id>
+      <property name="title" column="TITLE" type="string" length="50" />
+      <property name="episode_id" column="EPISODE_ID" type="int" />
+      <!-- Este campo puede ser grande, así que no lo cargamos en memoria inicialmente al traernos le entidad -->
+      <property name="opening_crawl" column="OPENING_CRAWL" type="text" lazy="true" />
+      <property name="director" column="DIRECTOR" type="string" length="150" />
+      <property name="producer" column="PRODUCER" type="string" length="150" />
+      <property name="release_date" column="RELEASE_DATE" type="date" />
+      <property name="created" column="CREATED" type="date" />
+      <property name="edited" column="EDITED" type="date" />
+
+      <!-- TABLA INTERMEDIA MANY YO MANY: FILMS_PEOPLE(ID_PEOPLE, ID_FILM) -->
+      <set name="actores" table="films_people" cascade="all">
+          <key column="ID_FILM" />  <!-- columna nueva en la tabla intermedia -->
+          <many-to-many column="ID_PEOPLE" class="es.espublico.ejercicio.modelo.People" />
+      </set>
+       <!-- TABLA INTERMEDIA MANY YO MANY: FILMS_STARSHIPS(ID_FILM, ID_STARSHIP) -->
+      <set name="naves" table="films_starships" cascade="all">
+          <key column="ID_FILM" />  <!-- columna nueva en la tabla intermedia -->
+          <many-to-many column="ID_STARSHIP" class="es.espublico.ejercicio.modelo.Starship" />
+      </set>
+
+    </class>
+</hibernate-mapping>

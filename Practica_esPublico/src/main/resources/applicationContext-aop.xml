@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<!-- Fichero de configuración de Spring AOP -->
+
+
+	<!-- Creamos el SpringBean del interceptor para poder utilizarlo. Principalmente para medir el tiempo de los aspectos -->
+	<bean id="interceptor" class="es.espublico.ejercicio.utilidades.Interceptor" />
+
+	<!--  DEFINICIÓN DE INTERCEPTORES (O LISTENERS) -->
+	 <aop:config>
+        <aop:pointcut id="guardarEnBD"
+              expression="execution(* es.espublico.ejercicio.persistencia.CsvDAO.altaVentas(..))" />
+              
+         <aop:pointcut id="leerCSV"
+              expression="execution(* es.espublico.ejercicio.negocio.GestionCSV.leerFicheroCSV(..))" />
+        
+         <aop:pointcut id="escribirCSV"
+              expression="execution(* es.espublico.ejercicio.negocio.GestionCSV.escribirFicheroCSV(..))" />
+        
+        
+     	<aop:aspect ref="interceptor">
+            <aop:around method="medirTiempoGuardadoBD" pointcut-ref="guardarEnBD" />
+            <aop:around method="medirTiempoLecturaFicheroCSV" pointcut-ref="leerCSV" />
+            <aop:around method="medirTiempoEscrituraFicheroCSV" pointcut-ref="escribirCSV" />
+	    </aop:aspect>
+     </aop:config>
+	
+
+</beans>

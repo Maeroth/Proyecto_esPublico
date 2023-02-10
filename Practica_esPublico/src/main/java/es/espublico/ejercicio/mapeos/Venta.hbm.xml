@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="es.espublico.ejercicio.modelo.Venta" table="VENTAS">
+		
+	  <id name="orderId" column="ORDER_ID" type="long">
+          <generator class="assigned" />
+      </id>
+      <property name="region" column="REGION" type="string" length="50" />
+      <property name="country" column="COUNTRY" type="string" length="50" />
+      <property name="itemType" column="ITEM_TYPE" type="string" length="15"/>
+      <property name="salesChannel" column="SALES_CHANNEL" type="string" length="10" />
+      <property name="orderPriority" column="ORDER_PRIORITY" type="string" length="1" />
+      <property name="orderDate" column="ORDER_DATE" type="date" />
+      <property name="shipDate" column="SHIP_DATE" type="date" />
+      <property name="unitsSold" column="UNITS_SOLD" type="int" />
+      <property name="unitPrice" column="UNIT_PRICE" type="double" />
+      <property name="unitCost" column="UNIT_COST" type="double" />
+      <property name="totalRevenue" column="TOTAL_REVENUE" type="double" />
+      <property name="totalCost" column="TOTAL_COST" type="double" />
+      <property name="totalProfit" column="TOTAL_PROFIT" type="double" />
+             
+	</class>
+</hibernate-mapping>

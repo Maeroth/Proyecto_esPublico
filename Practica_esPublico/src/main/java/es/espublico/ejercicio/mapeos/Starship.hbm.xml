@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="es.espublico.ejercicio.modelo.Starship" table="STARSHIPS">
+		
+	  <id name="url" column="ID" type="string" length="50">
+          <generator class="assigned" />
+      </id>
+
+	  <property name="name" column="NAME" type="string" length="50" />
+      <property name="model" column="MODEL" type="string" length="50" />
+      <property name="manufacturer" column="MANUFACTURER" type="string" length="100" />
+      <property name="cost_in_credits" column="COST_IN_CREDITS" type="string" length="15"/>
+      <property name="length" column="LENGHT" type="string" length="8"/>
+      <property name="max_atmosphering_speed" column="MAX_ATMOSPHERING_SPEED" type="string" length="8"/>
+      <property name="crew" column="CREW" type="string" length="10" />
+      <property name="passengers" column="PASSENGERS" type="string" length="8"/>
+      <property name="cargo_capacity" column="CARGO_CAPACITY" type="string" length="35" />
+      <property name="consumables" column="CONSUMABLES" type="string" length="50" />
+      <property name="hyperdrive_rating" column="HYPERDRIVE_RATING" type="string" length="8" />
+      <property name="MGLT" column="MGLT" type="string" length="8" />
+      <property name="starship_class" column="STARSHIP_CLASS" type="string" length="50" />
+      <property name="created" column="CREATED" type="date" />
+      <property name="edited" column="EDITED" type="date" />
+      
+      
+      <!-- TABLA INTERMEDIA MANY YO MANY: FILMS_STARSHIP(ID_FILM, ID_STARSHIP) -->
+      <!-- PONEMOS INVERSE=TRUE PARA QUE TENGA EL CONTROL LA TABLA FILM -->
+       <set name="peliculas" table="films_starships" cascade="all" inverse="true">
+           <key column="ID_STARSHIP" />  <!-- columna nueva en la tabla intermedia -->
+          <many-to-many column="ID_FILM" class="es.espublico.ejercicio.modelo.Film" />
+      </set>
+      
+<!--       TABLA INTERMEDIA MANY YO MANY: PEOPLE_STARSHIP(ID_PEOPLE, ID_STARSHIP) -->
+<!--       PONEMOS INVERSE=TRUE PARA QUE TENGA EL CONTROL LA TABLA PEOPLE -->
+       <set name="pilotos" table="people_starships" cascade="all" inverse="true">
+          <key column="ID_STARSHIP" />  <!-- columna nueva en la tabla intermedia -->
+          <many-to-many column="ID_PEOPLE" class="es.espublico.ejercicio.modelo.People" />
+      </set>
+      
+    </class>
+</hibernate-mapping>

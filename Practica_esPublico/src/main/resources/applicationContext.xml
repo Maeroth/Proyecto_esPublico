@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  	xmlns:aop="http://www.springframework.org/schema/aop"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+		
+		
+		<!-- Fichero de configuración principal de la aplicación. -->
+	
+		<!-- Carga el fichero de properties. -->
+		<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="classpath:spring-properties.properties" />
+		</bean>
+
+		<!-- Importa todos los demás. -->
+		<import resource="classpath:applicationContext-database.xml"/>
+		<import resource="classpath:applicationContext-negocio.xml"/>
+		<import resource="classpath:applicationContext-persistencia.xml"/>
+		<import resource="classpath:applicationContext-aop.xml"/>
+
+
+		
+</beans>
