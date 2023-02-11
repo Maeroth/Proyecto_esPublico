@@ -1,7 +1,7 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <configuration>
    
-   <property name="LOG_PATH" value="C:\\Users\\Maeroth\\Desktop\\Practica_esPublico\\logs\\esPublico.log"/> 
+   <property name="LOG_PATH" value="C:\\Users\\test\\Desktop\\Practica_esPublico\\logs\\esPublico.log"/> 
    <!-- VOLCADO A FICHERO -->
    <appender name = "FILE" class = "ch.qos.logback.core.FileAppender">
       <File>${LOG_PATH}</File>
