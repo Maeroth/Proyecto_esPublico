@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 
 /**
@@ -150,8 +151,10 @@ public class Starship implements Serializable{
 		return MGLT;
 	}
 
-	public void setMGLT(String mGLT) {
-		MGLT = mGLT;
+	//ESTE SET lo mapeamos para que recoja el campo en mayúsculas
+	@JsonSetter("MGLT")
+	public void setMGLT(String MGLT) {
+		this.MGLT = MGLT;
 	}
 
 	public String getStarship_class() {
